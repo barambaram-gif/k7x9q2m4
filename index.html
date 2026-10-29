@@ -110,8 +110,19 @@ const EX={
  bridge:{n:'Ponte glutei a terra (alternativa)',t:'Glutei',r:[10,15],bw:1,yt:'glute bridge form',cue:'Piedi vicini ai glutei, spingi con i talloni e fermati in alto senza inarcare la zona lombare.'},
  abdc:{n:'Abduzioni al cavo (alternativa)',t:'Glutei',r:[12,15],inc:1.25,yt:'cable hip abduction form',cue:'Busto stabile, movimento controllato, senza ruotare il bacino.'},
  calfbw:{n:'Calf raise in piedi a corpo libero (alternativa)',t:'Polpacci',r:[12,20],bw:1,yt:'standing calf raise bodyweight form',cue:'Pausa di un secondo in alto e discesa lenta fino in fondo.'},
- inc30:{n:'Panca inclinata 30° con manubri',t:'Petto alto',r:[6,10],alt:'cpinc',inc:2,nasm:'two-arm-incline-dumbbell-chest-press',yt:'incline dumbbell bench press 30 degrees form',cue:'Scapole addotte e depresse, gomiti a circa 45–60° dal busto. Scendi controllato fino a sentire il petto in allungamento, spingi senza far sbattere i manubri.'},
- latn:{n:'Lat machine presa neutra',t:'Dorsali',r:[8,12],inc:2.5,yt:'neutral grip lat pulldown form',cue:'Petto alto, tira i gomiti verso le costole, senza dondolare. Risali lento fino a braccia quasi distese.'},
+ cpm:{n:'Chest press inclinata (macchina)',t:'Petto alto',r:[6,10],inc:2.5,alt:'inc45',yt:'incline chest press machine form',cue:'Schiena aderente, gomiti a circa 45–60° dal busto. Scendi in 4 secondi, spingi controllato. Serie a piramide inversa: la prima la più pesante.'},
+ shp:{n:'Shoulder press (macchina)',t:'Spalle',r:[8,12],inc:2.5,alt:'shpd',yt:'shoulder press machine form',cue:'Schienale regolato, costole basse, senza inarcare la zona lombare. Spingi senza bloccare i gomiti.'},
+ shpd:{n:'Distensioni manubri sedute con schienale (alternativa)',t:'Spalle',r:[8,12],inc:2,yt:'seated dumbbell shoulder press form',cue:'Schiena aderente allo schienale, costole basse. Usala solo se manca la macchina.'},
+ pullo:{n:'Pullover al cavo alto con corda',t:'Dorsali',r:[10,15],inc:1.25,yt:'cable pullover rope form',cue:'Cavo alto, braccia quasi tese. Porta la corda verso le cosce con il busto fermo, senza piegarti in avanti.'},
+ curlc:{n:'Curl al cavo basso',t:'Bicipiti',r:[10,12],inc:1.25,yt:'low cable curl form',cue:'Gomiti fermi lungo i fianchi. Scendi in 3 secondi.'},
+ hamm:{n:'Curl martello con manubri',t:'Bicipiti',r:[8,12],inc:1,yt:'hammer curl form',cue:'Presa neutra, gomiti fermi, busto eretto senza dondolare.'},
+ shrug:{n:'Scrollate (macchina o manubri)',t:'Trapezio',r:[10,15],inc:2.5,yt:'shrug machine form',cue:'Spalle verso le orecchie, pausa di un secondo, discesa lenta. Busto eretto, niente carichi massimali.'},
+ cpf:{n:'Chest press piana (macchina)',t:'Petto',r:[5,6],inc:2.5,alt:'benchbb',yt:'chest press machine form',cue:'Scapole addotte, schiena aderente. Il carico sale ogni settimana (progressione continua, come nella tua scheda).'},
+ benchbb:{n:'Panca piana con bilanciere (alternativa)',t:'Petto',r:[5,6],inc:2.5,yt:'barbell bench press form',cue:'Usala solo se manca la macchina e con un compagno o i fermi di sicurezza. Piedi ben appoggiati, senza inarcare la zona lombare.'},
+ dbp:{n:'Distensioni manubri su panca piana',t:'Petto',r:[8,12],inc:2,yt:'dumbbell bench press form',cue:'Scapole addotte, gomiti a circa 45–60° dal busto, discesa controllata.'},
+ dip:{n:'Dip alle parallele (corpo libero)',t:'Petto basso e tricipiti',r:[5,12],bw:1,yt:'parallel bar dips form',cue:'Busto leggermente inclinato in avanti, discesa controllata fino a spalle sotto controllo. Fermati se senti fastidio alle spalle.'},
+ inc30:{n:'Panca inclinata 30° con manubri',t:'Petto alto',r:[5,6],alt:'cpinc',inc:2,nasm:'two-arm-incline-dumbbell-chest-press',yt:'incline dumbbell bench press 30 degrees form',cue:'Scapole addotte e depresse, gomiti a circa 45–60° dal busto. Scendi controllato fino a sentire il petto in allungamento, spingi senza far sbattere i manubri.'},
+ latn:{n:'Lat machine presa neutra',t:'Dorsali',r:[5,6],inc:2.5,yt:'neutral grip lat pulldown form',cue:'Petto alto, tira i gomiti verso le costole, senza dondolare. Risali lento fino a braccia quasi distese.'},
  cabfly:{n:'Croci ai cavi dal basso',t:'Petto alto',r:[10,15],inc:1.25,nasm:'cable-crossover',yt:'low to high cable fly upper chest form',cue:'Cavi in basso, gomiti leggermente flessi. Porta le mani davanti al viso risalendo ad arco; stringi la parte alta del petto, scendi lento.'},
  rowc:{n:'Rematore al cavo seduto',t:'Dorsali',r:[8,12],inc:2.5,nasm:'seated-machine-row-close-grip',yt:'seated cable row form',cue:'Schiena neutra e busto fermo. Tira l’impugnatura verso l’ombelico unendo le scapole, ritorno controllato senza piegare il busto in avanti.'},
  pushd:{n:'Pushdown tricipiti con corda',t:'Tricipiti',r:[10,15],inc:2.5,yt:'triceps rope pushdown form',cue:'Gomiti fermi ai fianchi. Estendi completamente e apri la corda in basso, risali controllando.'},
@@ -120,7 +131,7 @@ const EX={
  rowcs:{n:'Rematore manubri con petto appoggiato',t:'Dorsali',r:[8,12],inc:2,yt:'chest supported dumbbell row incline bench form',cue:'Petto appoggiato alla panca inclinata: la schiena non lavora per stabilizzare. Tira i gomiti indietro, stringi le scapole, scendi in allungamento.'},
  lat:{n:'Alzate laterali con manubri',t:'Spalle',r:[12,20],inc:1,yt:'dumbbell lateral raise form',cue:'Gomiti leggermente flessi, sali fino all’altezza delle spalle, polsi neutri. Pesi leggeri e controllo, niente slancio.'},
  face:{n:'Face pull ai cavi',t:'Spalle posteriori',r:[12,20],inc:1.25,nasm:'face-pull',yt:'cable face pull form',cue:'Cavo all’altezza del viso, tira la corda verso gli occhi aprendo i gomiti all’esterno e ruotando le spalle indietro.'},
- ohtri:{n:'Estensioni tricipiti sopra la testa al cavo',t:'Tricipiti',r:[10,15],inc:2.5,yt:'cable overhead triceps extension form',cue:'Gomiti vicini alla testa e fermi. Allunga bene in basso, estendi completamente in alto.'},
+ ohtri:{n:'Estensioni tricipiti sopra la testa (cavo basso, in piedi)',t:'Tricipiti',r:[10,15],inc:2.5,yt:'cable overhead triceps extension form',cue:'Gomiti vicini alla testa e fermi. Allunga bene in basso, estendi completamente in alto.'},
  curli:{n:'Curl su panca inclinata',t:'Bicipiti',r:[10,12],inc:1,yt:'incline dumbbell curl form',cue:'Panca a 45–60°, braccia che pendono dietro al busto: il bicipite parte allungato. Sali senza oscillare.'},
  lp:{n:'Leg press (carico moderato)',t:'Quadricipiti',r:[8,12],alt:'lpo',inc:5,nasm:'leg-press',yt:'leg press form foot placement',cue:'Piedi a metà pedana, bacino e schiena aderenti. Non scendere fino a staccare il bacino. Carico moderato; interrompi se compare dolore o formicolio lungo la gamba.'},
  hcurl:{n:'Leg curl da seduto (escursione corta)',t:'Femorali',r:[10,12],alt:'hcurlst',inc:2.5,yt:'seated leg curl machine form',cue:'Cosciali ben bloccati. Parti con il ginocchio già un po’ flesso, senza distendere del tutto la gamba, per non mettere in tensione il nervo. Fletti completamente e risali in 3 secondi. Se compare formicolio o dolore lungo la gamba, riduci l’escursione o ferma l’esercizio.'},
@@ -134,16 +145,17 @@ const EX={
  pall:{n:'Pallof press',t:'Core',r:[10,12],inc:1.25,yt:'pallof press form',cue:'Cavo laterale all’altezza del petto. Spingi le mani avanti e resisti alla rotazione del busto. Fai tutte le ripetizioni da un lato, poi dall’altro.'},
  dbug:{n:'Dead bug',t:'Core',r:[8,12],bw:1,nasm:'dead-bug',yt:'dead bug exercise form',cue:'Zona lombare aderente al pavimento. Estendi lentamente braccio e gamba opposti senza perdere il contatto.'}
 };
+const PLAN_OLD={UA:{n:'Upper 1'},LA:{n:'Lower 1'},UB:{n:'Upper 2'},LB:{n:'Lower 2'}};
 const PLAN={
- UA:{n:'Upper 1',s:'Spinta, petto alto a 30°',b:[{e:['inc30'],r:4,rest:150},{e:['latn'],r:4,rb:3,rest:120},{e:['cabfly','rowm'],r:3,rb:3,rest:120},{e:['pushd','curla'],r:4,rb:3,rest:90},{e:['lcab'],r:2,rb:0,rest:60}]},
- LA:{n:'Lower 1',s:'Quadricipiti e core',b:[{e:['lp'],r:4,rest:150},{e:['hcurl'],r:4,rb:4,rest:90},{e:['lext','calf'],r:3,rb:3,rest:90},{e:['revcr','plank'],r:3,rb:2,rest:60}]},
- UB:{n:'Upper 2',s:'Tirata e spalle, petto a 45°',b:[{e:['inc45'],r:4,rest:150},{e:['rowcs'],r:4,rb:4,rest:120},{e:['lat','face'],r:3,rb:2,rest:90},{e:['ohtri'],r:4,rb:3,rest:60},{e:['curli'],r:4,rb:3,rest:60}]},
- LB:{n:'Lower 2',s:'Glutei e femorali',b:[{e:['hip'],r:4,rest:150},{e:['abd'],r:4,rb:4,rest:60},{e:['lph'],r:3,rb:2,rest:120},{e:['hcurl'],r:3,rb:2,rest:90},{e:['pall','dbug'],r:3,rb:2,rest:60}]}
+ G1:{n:'Giorno 1',s:'Petto, spalle, tricipiti',b:[{e:['inc30'],r:5,rest:120},{e:['cpm'],r:4,rb:3,rest:90},{e:['cabfly','lcab'],r:3,rb:3,rest:75},{e:['shp'],r:3,rb:2,rest:90},{e:['ohtri'],r:3,rb:3,rest:60},{e:['pushd'],r:3,rb:2,rest:60}]},
+ G2:{n:'Giorno 2',s:'Dorso, bicipiti',b:[{e:['latn'],r:5,rest:120},{e:['rowm'],r:4,rb:3,rest:90},{e:['pullo'],r:3,rb:3,rest:75},{e:['shrug'],r:3,rb:0,rest:60},{e:['curlc','hamm'],r:4,rb:3,rest:60},{e:['curla'],r:3,rb:3,rest:60}]},
+ G3:{n:'Giorno 3',s:'Gambe e spalle',b:[{e:['lp'],r:4,rest:150},{e:['lext','calf'],r:3,rb:2,rest:75},{e:['hcurl'],r:3,rest:90},{e:['hip'],r:3,rb:2,rest:120},{e:['lat','face'],r:3,rb:2,rest:60}]},
+ G4:{n:'Giorno 4',s:'Petto, tricipiti, bicipiti',b:[{e:['cpf'],r:5,rest:120},{e:['dbp'],r:4,rb:3,rest:90},{e:['cabfly','pushd'],r:4,rb:3,rest:75},{e:['dip'],r:3,rb:2,rest:90},{e:['curli'],r:3,rest:60}]}
 };
 function blocksFor(day,mode){return PLAN[day].b.map(b=>({e:b.e.slice(),r:(mode==='b'&&b.rb!==undefined)?b.rb:b.r,rest:b.rest})).filter(b=>b.r>0);}
 function curB(){return S.cur.b||blocksFor(S.cur.day,'c');}
 function rx(id){return (S.cur&&S.cur.sub&&S.cur.sub[id])||id;}
-const CYCLE=['UA','LA','UB','LB'];
+const CYCLE=['G1','G2','G3','G4'];
 const TRANS=30;
 
 /* ───────── DIETA ───────── */
@@ -153,31 +165,32 @@ const F={yog:['Yogurt greco 0%',57,10,4,.2],spk:['Special K',375,15,76,1.5],whey
  farina:['Farina integrale',340,13,66,2.5],pane:['Pane integrale',250,9,45,3],arach:['Burro di arachidi',590,25,16,50],bar:['Barretta proteica (da etichetta)',400,40,36,12],bres:['Bresaola',150,32,.5,2],
  noci:['Noci',654,15,14,65],mand:['Mandorle',579,21,22,50],gal:['Gallette di riso',385,8,81,3],tonno:['Tonno al naturale',110,25,0,1],pasta:['Pasta (cruda)',355,12.5,73,1.5],riso:['Riso (crudo)',350,7,78,.6],
  pollo:['Petto di pollo/tacchino (crudo)',110,23,0,1.5],manzo:['Manzo magro (crudo)',120,22,0,3.5],pesce:['Pesce bianco (crudo)',90,18.5,0,1.5],salm:['Salmone (crudo)',200,20,0,13],patate:['Patate (crude)',77,2,17,.1],
- verd:['Verdure miste',25,2,4,.3],olio:['Olio extravergine',884,0,0,100],grana:['Grana/Parmigiano',392,33,0,28],libero:['Pasto libero (stima)',1,0,0,0]};
+ verd:['Verdure miste',25,2,4,.3],avena:['Avena / cereali (crudi)',372,13,60,7],fbis:['Fette biscottate',400,11,75,6],marm:['Marmellata light',110,.3,26,0],cioc:['Cioccolato fondente',540,7,46,35],latv:['Latte vegetale non zuccherato',20,.5,.5,1.1],skyr:['Skyr',63,11,4,.2],fr:['Frutta fresca (media)',50,.7,12,.2],cous:['Cous cous (crudo)',355,12,72,1.5],avo:['Avocado',160,2,9,15],olio:['Olio extravergine',884,0,0,100],grana:['Grana/Parmigiano',392,33,0,28],libero:['Pasto libero (stima)',1,0,0,0]};
 const MEALS=[
- {id:'col',n:'Colazione',note:'Pronta in 2–3 minuti. Se ti alleni al mattino a digiuno, puoi bere solo lo shaker prima e fare il resto dopo.',o:[
-  {n:'Yogurt greco, Special K e frutta',it:[['yog',150],['spk',40],['frag',150],['whey',20],['chia',10]],tip:'Mescola la whey nello yogurt. Prepara la sera la ciotola con Special K separato.'},
-  {n:'Pancake proteici (impasto preparato in anticipo)',it:[['uovo',120],['alb',60],['whey',15],['farina',35],['ban',80]],tip:'Impasto la sera, cottura 5 minuti in padella antiaderente senza olio.'},
-  {n:'Shaker e panino',it:[['whey',25],['latte',200],['pane',60],['arach',10]],tip:'Shaker con latte, pane integrale con burro di arachidi. Nessuna cottura.'}]},
- {id:'sm',n:'Spuntino di metà mattina',note:'Da portare con sé, senza frigo né posate.',o:[
-  {n:'Barretta proteica e mela',it:[['bar',50],['mela',150]],tip:'Barretta: usala come opzione occasionale.'},
-  {n:'Panino con bresaola e kiwi',it:[['pane',60],['bres',50],['kiwi',100]]},
-  {n:'Frutta secca, yogurt e mela',it:[['noci',10],['mand',10],['yog',125],['mela',100]]},
-  {n:'Shaker whey con banana e mandorle',it:[['whey',25],['ban',110],['mand',10]],tip:'Whey in polvere nello shaker con acqua.'}]},
- {id:'pr',n:'Pranzo',note:'Carboidrato, proteina magra, verdure e un filo d’olio.',o:[
-  {n:'Pasta con pollo e verdure',it:[['pasta',80],['pollo',100],['verd',200],['olio',15],['grana',10]]},
-  {n:'Riso con tonno e uovo',it:[['riso',80],['tonno',100],['uovo',60],['verd',200],['olio',15]]},
-  {n:'Patate con manzo magro e pane',it:[['patate',250],['manzo',120],['verd',200],['pane',40],['olio',15]]}]},
- {id:'sp',n:'Spuntino del pomeriggio',note:'Se ti alleni nel tardo pomeriggio: scegli l’opzione pre-allenamento 60–90 minuti prima, poi lo shaker finisce l’allenamento.',o:[
-  {n:'Pre-allenamento: banana, gallette e shaker dopo',it:[['ban',120],['gal',30],['whey',25]],tip:'Banana e gallette 60–90 minuti prima. Lo shaker di whey subito dopo l’allenamento.'},
-  {n:'Yogurt greco, kiwi e noci',it:[['yog',150],['kiwi',150],['noci',20]]},
-  {n:'Barretta proteica, mela e mandorle',it:[['bar',50],['mela',150],['mand',10]]}]},
- {id:'ce',n:'Cena',note:'Proteina magra o pesce, carboidrato moderato, verdure.',o:[
-  {n:'Pollo o tacchino con patate',it:[['pollo',150],['patate',250],['verd',250],['olio',15]]},
-  {n:'Pesce con pane integrale',it:[['pesce',220],['pane',60],['verd',250],['olio',15]]},
-  {n:'Manzo magro con patate',it:[['manzo',170],['patate',250],['verd',250],['olio',15]]},
-  {n:'Salmone con riso',it:[['salm',130],['riso',70],['verd',250]]}]}
+ {id:'col',n:'Colazione',note:'Veloce: frullare avena, proteine in polvere e frutta (come nel tuo documento) richiede 2–3 minuti.',
+  c:[{n:'Avena o cereali 80 g',it:[['avena',80],['fr',100]]},{n:'Fette biscottate 80 g e marmellata light 20 g',it:[['fbis',80],['marm',20],['fr',100]]},{n:'Pane 110 g',it:[['pane',110],['fr',100]]}],
+  p:[{n:'Yogurt greco 0% 150 g e whey 10 g',it:[['yog',150],['whey',10]]},{n:'Whey 30 g e latte vegetale 250 ml',it:[['whey',30],['latv',250]]},{n:'Albumi 200 ml e 1 uovo',it:[['alb',200],['uovo',60]]}],
+  g:[{n:'Frutta secca 10 g',it:[['noci',10]]},{n:'Cioccolato fondente 10 g',it:[['cioc',10]]},{n:'Burro di arachidi 10 g',it:[['arach',10]]}]},
+ {id:'sm',n:'Spuntino di metà mattina',note:'Da portare con sé, senza frigo né posate.',
+  c:[{n:'Pane 110 g',it:[['pane',110]]},{n:'Frutta 350 g',it:[['fr',350]]},{n:'Gallette 80 g',it:[['gal',80]]}],
+  p:[{n:'Affettati magri 90 g',it:[['bres',90]]},{n:'Tonno 90 g',it:[['tonno',90]]},{n:'Skyr 150 g',it:[['skyr',150]]},{n:'Whey 25 g',it:[['whey',25]]}],
+  g:[{n:'Frutta secca 10 g',it:[['noci',10]]},{n:'Cioccolato fondente 10 g',it:[['cioc',10]]},{n:'Burro di arachidi 10 g',it:[['arach',10]]}]},
+ {id:'pr',n:'Pranzo',note:'Un carboidrato, una proteina, un grasso e verdure.',v:[['verd',175]],
+  c:[{n:'Pasta 100 g (cruda)',it:[['pasta',100]]},{n:'Riso 100 g (crudo)',it:[['riso',100]]},{n:'Gallette 100 g',it:[['gal',100]]},{n:'Cous cous 100 g (crudo)',it:[['cous',100]]},{n:'Patate 400 g (200 g ogni 50 g di pasta o riso)',it:[['patate',400]]}],
+  p:[{n:'Petto di pollo o tacchino 130 g',it:[['pollo',130]]},{n:'Carne magra 130 g',it:[['manzo',130]]},{n:'Pesce 150 g',it:[['pesce',150]]},{n:'Albumi 250 ml',it:[['alb',250]]}],
+  g:[{n:'Olio extravergine 5 g',it:[['olio',5]]},{n:'Avocado 35 g',it:[['avo',35]]},{n:'Parmigiano 10 g',it:[['grana',10]]}]},
+ {id:'sp',n:'Spuntino del pomeriggio',note:'Stesse opzioni dello spuntino della mattina.',
+  c:[{n:'Pane 110 g',it:[['pane',110]]},{n:'Frutta 350 g',it:[['fr',350]]},{n:'Gallette 80 g',it:[['gal',80]]}],
+  p:[{n:'Affettati magri 90 g',it:[['bres',90]]},{n:'Tonno 90 g',it:[['tonno',90]]},{n:'Skyr 150 g',it:[['skyr',150]]},{n:'Whey 25 g',it:[['whey',25]]}],
+  g:[{n:'Frutta secca 10 g',it:[['noci',10]]},{n:'Cioccolato fondente 10 g',it:[['cioc',10]]},{n:'Burro di arachidi 10 g',it:[['arach',10]]}]},
+ {id:'ce',n:'Cena',note:'Come il pranzo, con un po’ più di grassi.',v:[['verd',175]],
+  c:[{n:'Pasta 100 g (cruda)',it:[['pasta',100]]},{n:'Riso 100 g (crudo)',it:[['riso',100]]},{n:'Gallette 100 g',it:[['gal',100]]},{n:'Cous cous 100 g (crudo)',it:[['cous',100]]},{n:'Patate 400 g (200 g ogni 50 g di pasta o riso)',it:[['patate',400]]}],
+  p:[{n:'Petto di pollo o tacchino 130 g',it:[['pollo',130]]},{n:'Carne magra 130 g',it:[['manzo',130]]},{n:'Pesce 150 g',it:[['pesce',150]]},{n:'Albumi 300 ml e 1 uovo',it:[['alb',300],['uovo',60]]}],
+  g:[{n:'Olio extravergine 10 g',it:[['olio',10]]},{n:'Avocado 70 g',it:[['avo',70]]},{n:'Parmigiano 20 g',it:[['grana',20]]}]}
 ];
+const DIET0={col:{c:0,p:0,g:0},sm:{c:2,p:1,g:0},pr:{c:0,p:0,g:0},sp:{c:2,p:1,g:0},ce:{c:0,p:0,g:0}};
+function mealSel(m){const d=(S.diet2&&S.diet2[m.id])||DIET0[m.id];const cl=(a,i)=>Math.max(0,Math.min(a.length-1,i||0));return{c:cl(m.c,d.c),p:cl(m.p,d.p),g:cl(m.g,d.g)};}
+function mealItems(m){const q=mealSel(m);return m.c[q.c].it.concat(m.p[q.p].it,m.g[q.g].it,m.v||[]);}
 const FREE={n:'Pasto libero (pizza, ristorante, aperitivo)',kcal:900,p:35,c:100,f:40,tip:'Stima. Tieni almeno una fonte di proteine e non saltare gli altri pasti.'};
 function macros(items){let k=0,p=0,c=0,f=0;items.forEach(([id,g])=>{const x=F[id];k+=x[1]*g/100;p+=x[2]*g/100;c+=x[3]*g/100;f+=x[4]*g/100;});return{k,p,c,f};}
 function optM(o){return o.free?{k:o.kcal,p:o.p,c:o.c,f:o.f}:macros(o.it);}
@@ -203,7 +216,7 @@ const NUT_ORIG={immutable:true,source:'doc2, doc4, doc5',review:'da verificare',
 // Valori tipici per 100 g (tabelle nutrizionali standard, da verificare); servono solo per una STIMA di una scelta tipica
 const NUT_ASSUME={cer:372,gal:387,pasta:353,yog:57,whey:400,fs:600,frutta:50,tonno:110,pollo:110,olio_ml:8.1,verdure:20,legumi:110};
 function histKcal(v){const A=NUT_ASSUME,c=v.carbs,col=c.col/100*A.cer+1.5*A.yog+0.1*A.whey+0.1*A.fs+A.frutta,sp=c.sp/100*A.gal+1.2*A.tonno+0.1*A.fs,sp2=c.sp2/100*A.gal+1.2*A.tonno+0.1*A.fs,pr=c.pr/100*A.pasta+1.5*A.pollo+5*A.olio_ml+1.75*A.verdure,ce=c.ce/100*A.pasta+1.5*A.pollo+10*A.olio_ml+1.75*A.verdure+v.legumi/100*A.legumi;return Math.round(col+sp+sp2+pr+ce);}
-function curKcal(day){const ms=day==='we'?MEALS.map(m=>m.id==='ce'?Object.assign({},m,{o:m.o.concat([Object.assign({free:1},FREE)])}):m):MEALS;const pick=S.diet[day];let k=0;ms.forEach(m=>{let i=pick[m.id];if(i<0)i=m.o.length-1;if(i>=m.o.length)i=0;k+=optM(m.o[i]).k;});return Math.round(k);}
+function curKcal(day){let k=0;MEALS.forEach(m=>{k+=macros(mealItems(m)).k;});return Math.round(k);}
 function nutAdherence(){const lim=addDays(today(),-14),L=S.nutritionLog.filter(x=>x.date>lim);if(L.length<7)return null;let ok=0,tot=0;L.forEach(x=>Object.values(x.meals).forEach(v=>{tot++;if(v==='ok')ok++;}));return{pct:Math.round(ok/tot*100),days:L.length};}
 function nutProposal(){
   const ws=S.weights.slice().sort((a,b)=>a.date<b.date?-1:1);
@@ -215,13 +228,13 @@ function nutProposal(){
   if(!ad)return{st:'insufficiente',msg:'Dati insufficienti: registra come hai seguito i pasti per almeno 7 giorni negli ultimi 14, così posso distinguere un piano sbagliato da un piano non seguito.'};
   const d=mean(m1)-mean(m0),pc=d/mean(m0)*100;let delta=0,why='';
   if(ad.pct<70)return{st:'nessuna',msg:'Aderenza al piano negli ultimi 14 giorni: '+ad.pct+'% dei pasti. Sotto il 70% non propongo cambi di calorie: il dato non dice se il piano funziona.'};
-  if(pc<-0.5){delta=150;why='il peso medio è sceso di '+Math.abs(pc).toFixed(2)+'% in una settimana, oltre lo 0,5%';}
-  else if(pc>0.25){delta=-150;why='il peso medio è salito di '+pc.toFixed(2)+'% in una settimana, oltre lo 0,25%';}
-  else return{st:'nessuna',msg:'Variazione del peso medio '+(pc>=0?'+':'')+pc.toFixed(2)+'% in una settimana: nella fascia prevista, nessuna modifica.'};
+  if(pc<0.1){delta=150;why='per aumentare la massa serve una crescita del peso medio di circa 0,1–0,5% a settimana: è '+(pc>=0?'+':'')+pc.toFixed(2)+'%, sotto la fascia';}
+  else if(pc>0.5){delta=-150;why='il peso medio è salito di '+pc.toFixed(2)+'% in una settimana, oltre lo 0,5%: la quota in più è probabilmente grasso';}
+  else return{st:'nessuna',msg:'Variazione del peso medio '+(pc>=0?'+':'')+pc.toFixed(2)+'% in una settimana: nella fascia prevista per aumentare la massa (0,1–0,5%), nessuna modifica.'};
   const cur=curKcal('wk')+S.nutritionPlans.current.kcalAdj,sug=cur+delta;
   return{st:'proponi',delta:delta,cur:cur,sug:sug,abs:delta,pct:+(delta/cur*100).toFixed(1),why:why,data:'pesate: '+m1.length+' negli ultimi 7 giorni, '+m0.length+' nei 7 precedenti; aderenza '+ad.pct+'% su '+ad.days+' giorni',limits:'Il peso del singolo giorno oscilla con acqua e sale; due settimane sono poche per una tendenza solida; la regola ±150 kcal è una convenzione, non un calcolo individuale.',v:'v'+(S.decisions.filter(x=>x.type==='kcal').length+1)};
 }
-function v5shell(){return{schema:5,meta:{schema:5,migratedFrom:null,migratedAt:null,log:[]},archive:[],extracted:[],proposed:null,cfg:{rirMax:1,lowMin:3,poorMin:2,window:4},forceDeload:null,programs:[],nutritionPlans:{original:null,current:{kcalAdj:0,since:null}},nutritionLog:[],suggestions:[],decisions:[]};}
+function v5shell(){return{schema:5,meta:{schema:5,migratedFrom:null,migratedAt:null,log:[]},archive:[],extracted:[],proposed:null,diet2:null,freeMeals:{},cfg:{rirMax:1,lowMin:3,poorMin:2,window:4},forceDeload:null,programs:[],nutritionPlans:{original:null,current:{kcalAdj:0,since:null}},nutritionLog:[],suggestions:[],decisions:[]};}
 function addArchive(){ // write-once: existing entries are never modified
   const have=new Set(S.archive.map(x=>x.id));
   ARCHIVE0.forEach(d=>{if(!have.has(d.id))S.archive.push(Object.assign({addedAt:today(),source:'allegato utente',review:'da verificare'},d));});
@@ -239,6 +252,8 @@ function load(){
     }
   }catch(e){}
   const sh=v5shell();Object.keys(sh).forEach(k=>{if(S[k]===undefined)S[k]=sh[k];});
+  if(S.cur&&!PLAN[S.cur.day]){S.legacyCur=S.cur;S.cur=null;}
+  if(S.sel&&!PLAN[S.sel])S.sel=null;
   S.schema=5;S.meta.schema=5;
   addArchive();
   if(!S.nutritionPlans.original)S.nutritionPlans.original=NUT_ORIG;
@@ -256,8 +271,8 @@ function rounds(b){return isDeload()?Math.max(2,b.r-1):b.r;}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2200);}
-function nextDay(){const l=S.sessions[S.sessions.length-1];if(!l||!CYCLE.includes(l.day))return 'UA';return CYCLE[(CYCLE.indexOf(l.day)+1)%4];}
-function estMin(day,mode){mode=mode||'c';let s=300+240;const B=blocksFor(day,mode);s+=45*B.length;if(mode==='c')s+=300;if(day==='LA'||day==='LB')s+=240;B.forEach(b=>{s+=rounds(b)*(b.e.length===2?(2*40+TRANS+b.rest):(40+b.rest));});return Math.round(s/60);}
+function nextDay(){const l=S.sessions[S.sessions.length-1];if(!l||!CYCLE.includes(l.day))return 'G1';return CYCLE[(CYCLE.indexOf(l.day)+1)%4];}
+function estMin(day,mode){mode=mode||'c';let s=300+240;const B=blocksFor(day,mode);s+=45*B.length;if(mode==='c')s+=300;if(day==='G3')s+=240;B.forEach(b=>{s+=rounds(b)*(b.e.length===2?(2*40+TRANS+b.rest):(40+b.rest));});return Math.round(s/60);}
 
 /* ───────── STORICO PER ESERCIZIO ───────── */
 function hist(exId){
@@ -306,7 +321,7 @@ function lineChart(pts,opt){
   return s+'</svg>';
 }
 
-const GRP={'Petto alto':'Petto','Dorsali':'Dorso','Spalle':'Spalle','Spalle posteriori':'Spalle','Tricipiti':'Tricipiti','Bicipiti':'Bicipiti','Quadricipiti':'Quadricipiti','Femorali':'Femorali','Glutei':'Glutei','Glutei e femorali':'Glutei','Polpacci':'Polpacci','Addome':'Core','Core':'Core'};
+const GRP={'Petto alto':'Petto','Petto':'Petto','Petto basso e tricipiti':'Petto','Trapezio':'Dorso','Dorsali':'Dorso','Spalle':'Spalle','Spalle posteriori':'Spalle','Tricipiti':'Tricipiti','Bicipiti':'Bicipiti','Quadricipiti':'Quadricipiti','Femorali':'Femorali','Glutei':'Glutei','Glutei e femorali':'Glutei','Polpacci':'Polpacci','Addome':'Core','Core':'Core'};
 function exGroup(e){const x=EX[e.id]||Object.values(EX).find(q=>q.n===e.name);return x?(GRP[x.t]||x.t):null;}
 function vAnalisi(){
   const ss=S.sessions,now=today();let h='<div class="hr"></div><h2>Analisi</h2><div class="small" style="margin:4px 0 10px">Solo dati registrati da te. Un andamento affiancato a un altro non dimostra che uno causi l’altro.</div>';
@@ -428,7 +443,7 @@ function vProg(){
     const m1=inR(-1,7),m0=inR(7,14),mean=a=>a.reduce((s,q)=>s+q.kg,0)/a.length;
     h+='<div class="row sp" style="margin:6px 0"><span class="small">Media ultimi 7 giorni</span><b class="cd" style="font-size:26px">'+(m1.length?mean(m1).toFixed(1)+' kg':'—')+'</b></div>';
     if(m1.length>=4&&m0.length>=4){const d=mean(m1)-mean(m0),pc=d/mean(m0)*100;let adv,col='var(--amt)';
-      if(pc<-0.5||pc>0.25)adv='Fuori dalla fascia prevista. La proposta di taratura, con aderenza, motivazione e limiti, è nella scheda Dieta.';
+      if(pc<0.1||pc>0.5)adv='Fuori dalla fascia prevista. La proposta di taratura, con aderenza, motivazione e limiti, è nella scheda Dieta.';
       else{adv='Andamento nella fascia prevista: mantieni le calorie.';col='var(--tx2)';}
       h+='<div class="card" style="margin-top:8px"><div class="lbl">Taratura delle calorie (ogni 2 settimane)</div><div style="margin-top:4px;font-size:14px;color:'+col+'">Variazione: '+(d>=0?'+':'')+d.toFixed(2)+' kg ('+(pc>=0?'+':'')+pc.toFixed(2)+'%). '+adv+'</div><div class="small" style="margin-top:6px">Regola pratica di taratura, non un risultato di singoli studi.</div></div>';}
     else h+='<div class="small" style="margin-top:6px">Servono almeno 4 pesate nei 7 giorni e altre 4 nei 7 precedenti per tarare le calorie.</div>';
@@ -443,20 +458,22 @@ function vProg(){
 }
 
 /* — DIETA — */
-function dayMeals(){return U.dd==='we'?MEALS.map(m=>m.id==='ce'?Object.assign({},m,{o:m.o.concat([Object.assign({free:1},FREE)])}):m):MEALS;}
+function dayTot(){let T={k:0,p:0,c:0,f:0};MEALS.forEach(m=>{const x=macros(mealItems(m));T.k+=x.k;T.p+=x.p;T.c+=x.c;T.f+=x.f;});return T;}
 function vDieta(){
-  const ms=dayMeals(),pick=S.diet[U.dd];let T={k:0,p:0,c:0,f:0};
-  const body=ms.map(m=>{let i=pick[m.id];if(i<0)i=m.o.length-1;if(i>=m.o.length)i=0;const o=m.o[i],x=optM(o);T.k+=x.k;T.p+=x.p;T.c+=x.c;T.f+=x.f;
-    return '<details class="meal"><summary><span><span class="lbl">'+m.n+'</span><br><span style="font-size:17px;font-weight:600">'+esc(o.n)+'</span></span><span class="cd" style="font-size:22px;color:var(--mut)">'+Math.round(x.k)+'</span></summary>'
+  const T=dayTot(),free=U.dd==='we';
+  const body=MEALS.map(m=>{const q=mealSel(m),x=macros(mealItems(m)),isFree=free&&S.freeMeals[m.id];
+    const grp=(key,lab)=>'<div class="small" style="margin:10px 0 4px">'+lab+'</div><div class="row" style="gap:8px;flex-wrap:wrap">'+m[key].map((o,i)=>'<button class="pill'+(i===q[key]?' on':'')+'" data-act="dpick" data-m="'+m.id+'" data-k="'+key+'" data-v="'+i+'" style="min-height:44px;height:auto;padding:8px 14px;text-align:left">'+esc(o.n)+'</button>').join('')+'</div>';
+    return '<details class="meal"><summary><span><span class="lbl">'+m.n+(isFree?' · libero':'')+'</span><br><span style="font-size:15px;font-weight:600">'+esc(m.c[q.c].n+' · '+m.p[q.p].n)+'</span></span><span class="cd" style="font-size:22px;color:var(--mut)">'+Math.round(x.k)+'</span></summary>'
     +'<div class="small" style="margin:0 0 8px">'+esc(m.note)+'</div>'
-    +(o.free?'<div class="food"><span>Stima</span><span>~'+o.kcal+' kcal · P '+o.p+' g</span></div>':o.it.map(([id,g])=>'<div class="food"><span>'+esc(F[id][0])+'</span><span>'+g+' g</span></div>').join(''))
-    +'<div class="small" style="margin:8px 0">P '+Math.round(x.p)+' g · C '+Math.round(x.c)+' g · G '+Math.round(x.f)+' g'+(o.tip?' · '+esc(o.tip):'')+'</div>'
-    +'<div class="row" style="gap:8px;flex-wrap:wrap">'+m.o.map((q,qi)=>'<button class="pill'+(qi===i?' on':'')+'" data-act="dpick" data-m="'+m.id+'" data-v="'+qi+'">'+(qi+1)+'</button>').join('')+'<span class="small">Cambia variante</span></div></details>';}).join('');
-  let h='<h1>Dieta</h1><div class="row" style="gap:8px;margin:12px 0"><button class="pill'+(U.dd==='wk'?' on':'')+'" data-act="dday" data-v="wk">Feriale</button><button class="pill'+(U.dd==='we'?' on':'')+'" data-act="dday" data-v="we">Weekend</button></div>';
-  h+='<div class="card"><div class="row sp"><span class="lbl">Totale del giorno</span><b class="cd" style="font-size:34px;line-height:1">'+Math.round(T.k)+' kcal</b></div><div class="row sp" style="margin-top:8px;font-size:14px;color:var(--tx2)"><span>Proteine '+Math.round(T.p)+' g</span><span>Carboidrati '+Math.round(T.c)+' g</span><span>Grassi '+Math.round(T.f)+' g</span></div></div>';
-  h+='<div class="small" style="margin:10px 0">Obiettivo: media settimanale circa 2.250 kcal (feriali circa 2.150, weekend circa 2.500), proteine 160–170 g, grassi almeno 65 g, fibre 25–35 g, niente legumi. Quantità indicative, con alimenti pesati crudi. Al weekend puoi scegliere il pasto libero a cena.</div>'+body;
-  h+='<div class="card" style="margin-top:12px"><div class="lbl">Ogni giorno</div><div style="font-size:14px;color:var(--tx2);margin-top:4px">Creatina monohidrato 3–5 g (qualsiasi orario), acqua a sufficienza, 5 porzioni di frutta e verdura ripartite nei pasti. La vitamina D solo se le analisi la mostrano bassa.</div></div>';
-
+    +grp('c','Carboidrati')+grp('p','Proteine')+grp('g','Grassi')+(m.v?'<div class="small" style="margin-top:10px">Verdure: 175 g (150–200 g)</div>':'')
+    +'<div class="small" style="margin:10px 0">P '+Math.round(x.p)+' g · C '+Math.round(x.c)+' g · G '+Math.round(x.f)+' g</div>'
+    +(free?'<button class="pill'+(isFree?' on':'')+'" data-act="freem" data-m="'+m.id+'">'+(isFree?'Pasto libero: tocca per annullare':'Segna come pasto libero')+'</button>':'')+'</details>';}).join('');
+  let h='<h1>Dieta</h1><div class="row" style="gap:8px;margin:12px 0"><button class="pill'+(U.dd==='wk'?' on':'')+'" data-act="dday" data-v="wk">Giorno normale</button><button class="pill'+(U.dd==='we'?' on':'')+'" data-act="dday" data-v="we">Giorno libero</button></div>';
+  h+='<div class="card"><div class="row sp"><span class="lbl">Totale del giorno</span><b class="cd" style="font-size:34px;line-height:1">'+Math.round(T.k)+' kcal</b></div><div class="row sp" style="margin-top:8px;font-size:14px;color:var(--tx2)"><span>Proteine '+Math.round(T.p)+' g ('+(T.p/80).toFixed(1)+' g/kg)</span><span>Carboidrati '+Math.round(T.c)+' g</span><span>Grassi '+Math.round(T.f)+' g</span></div></div>';
+  if(free){const fm=MEALS.filter(m=>S.freeMeals[m.id]),fk=fm.reduce((a,m)=>a+macros(mealItems(m)).k,0);
+    h+='<div class="card" style="margin-top:12px"><div class="lbl">Giorno libero</div><div style="font-size:14px;color:var(--tx2);margin-top:6px">Un solo giorno libero a settimana, distribuibile tra sabato e domenica: segna i pasti liberi qui sotto. Il budget è quello di un giorno normale ('+Math.round(T.k)+' kcal): ogni pasto libero non dovrebbe superare le calorie del pasto che sostituisce'+(fm.length?' (ora '+fm.length+' pasti, circa '+Math.round(fk)+' kcal)':'')+'. Tieni una fonte di proteine in ogni pasto libero e non saltare gli altri. Il limite di 2.000 kcal dei tuoi documenti valeva per la fase di definizione.</div></div>';}
+  h+='<div class="small" style="margin:10px 0">Struttura dei tuoi documenti: per ogni pasto una fonte di carboidrati, una di proteine e una di grassi. Quantità a crudo. Proteine ridotte rispetto al documento (carne o pesce da 150 a 130 g, tonno o affettati da 120 a 90 g) per scendere da circa 2,6 a circa 2,4 g/kg; grassi invariati. Valori nutrizionali indicativi da tabelle standard.</div>'+body;
+  h+='<div class="card" style="margin-top:12px"><div class="lbl">Ogni giorno</div><div style="font-size:14px;color:var(--tx2);margin-top:4px">Acqua almeno 2,5 litri, due porzioni di verdure da 150–200 g. Integratori dei tuoi documenti, facoltativi: creatina 3–5 g, omega-3, multivitaminico.</div></div>';
   {const cp=S.nutritionPlans.current,np=nutProposal();
    h+='<div class="card" style="margin-top:16px"><div class="lbl">Piano corrente</div><div style="font-size:14px;color:var(--tx2);margin-top:6px">'+(cp.kcalAdj?'Aggiustamento approvato: '+(cp.kcalAdj>0?'+':'')+cp.kcalAdj+' kcal al giorno dal '+cp.since+' (aggiungi o togli carboidrati o grassi nei pasti). Totale di riferimento feriale: circa '+(curKcal('wk')+cp.kcalAdj)+' kcal.':'Nessun aggiustamento approvato. Totale feriale di riferimento: circa '+curKcal('wk')+' kcal.')+'</div></div>';
    h+='<div class="card" style="margin-top:12px"><div class="lbl">Registro di oggi</div><div class="small" style="margin:4px 0 8px">Come hai seguito i pasti? Serve solo per valutare le proposte.</div>';
@@ -494,7 +511,7 @@ function vStorico(){
   let h='<h1>Storico</h1><div class="row" style="gap:8px;margin:12px 0;flex-wrap:wrap"><button class="btn ghost sm" data-act="arch">Archivio storico</button><button class="btn ghost sm" data-act="imp">Importa dati</button><button class="btn ghost sm" data-act="exp">Esporta backup</button></div>';
   h+='<div class="small" style="margin-bottom:8px">Importa il file JSON della vecchia versione: le sedute si aggiungono senza toccare quelle esistenti.</div>';
   if(!ss.length)h+='<div class="small" style="padding:20px 0">Nessuna seduta registrata.</div>';
-  h+=ss.map(s=>{const nm=PLAN[s.day]?PLAN[s.day].n:('Giorno '+s.day),sets=(s.exercises||[]).reduce((a,e)=>a+(e.sets||[]).length,0),open=U.hist===s.id;
+  h+=ss.map(s=>{const nm=PLAN[s.day]?PLAN[s.day].n:(PLAN_OLD[s.day]?PLAN_OLD[s.day].n:('Giorno '+s.day)),sets=(s.exercises||[]).reduce((a,e)=>a+(e.sets||[]).length,0),open=U.hist===s.id;
     return '<div class="meal"><button class="ex" data-act="hopen" data-v="'+s.id+'" style="width:100%;text-align:left;background:none;border:none;color:var(--tx);display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:0"><span><span class="n" style="font-size:17px;font-weight:600">'+esc(nm)+'</span><br><span class="small">'+esc(s.date)+(s.week?' · settimana '+s.week:'')+(s.minutes?' · '+s.minutes+' min':'')+'</span></span><span class="cd" style="font-size:22px;color:var(--mut)">'+sets+' serie</span></button>'
     +(open?'<div style="padding:6px 0">'+(s.exercises||[]).map(e=>'<div style="margin:8px 0"><div style="font-size:15px;font-weight:600">'+esc(e.name)+'</div><div class="small">'+(e.sets||[]).map(x=>(x.weight?x.weight+' kg × ':'')+x.reps).join(' · ')+'</div></div>').join('')+'<button class="pill" data-act="hdel" data-v="'+s.id+'">Elimina seduta</button></div>':'')+'</div>';}).join('');
   h+='<div class="hr"></div><div class="lbl">Inizio del piano di 12 settimane</div><div class="row" style="gap:10px;margin-top:6px"><input type="date" class="sel" id="sdate" value="'+S.start+'" style="flex:1"><button class="btn sm" data-act="sdate">Salva</button></div><div class="small" style="margin-top:6px">Oggi sei nella settimana '+week()+'.</div>';
@@ -565,8 +582,10 @@ V.addEventListener('click',e=>{
   else if(a==='radd'&&U.rest){U.rest.end+=parseInt(v)*1000;U.rest.total=Math.max(5,U.rest.total+parseInt(v));U.rest.done=false;tick();}
   else if(a==='rskip'){U.rest=null;const rc=document.getElementById('rc');if(rc)rc.setAttribute('stroke-dashoffset','490');document.querySelectorAll('[data-rl]').forEach(n=>n.textContent='Pronto');tick();}
   else if(a==='addw'){const x=parseFloat(String(document.getElementById('bw').value).replace(',','.'));if(!x||x<30||x>250){toast('Inserisci un peso valido');return;}const d=today();S.weights=S.weights.filter(w=>w.date!==d);S.weights.push({date:d,kg:x});save();toast('Peso salvato');render();}
-  else if(a==='dpick'){S.diet[U.dd][b.dataset.m]=parseInt(v);save();U.keep=true;U.open=b.dataset.m;const keep=[...document.querySelectorAll('details.meal[open]')].map(d=>d.querySelector('.lbl').textContent);render();document.querySelectorAll('details.meal').forEach(d=>{if(keep.includes(d.querySelector('.lbl').textContent))d.open=true;});}
-  else if(a==='dday'){U.dd=v;render();}
+  else if(a==='dpick'){S.diet2=S.diet2||JSON.parse(JSON.stringify(DIET0));const mm=b.dataset.m;S.diet2[mm]=S.diet2[mm]||Object.assign({},DIET0[mm]);S.diet2[mm][b.dataset.k]=parseInt(v);save();U.keep=true;const keep=[...document.querySelectorAll('details.meal[open]')].map(d=>d.querySelector('.lbl').textContent);render();document.querySelectorAll('details.meal').forEach(d=>{if(keep.includes(d.querySelector('.lbl').textContent))d.open=true;});}
+  else if(a==='freem'){S.freeMeals[b.dataset.m]=!S.freeMeals[b.dataset.m];save();U.keep=true;render();}
+  
+else if(a==='dday'){U.dd=v;render();}
   else if(a==='hopen'){U.hist=U.hist==v*1?null:v*1;U.keep=true;render();}
   else if(a==='hdel'){if(confirm('Eliminare questa seduta?')){S.sessions=S.sessions.filter(s=>s.id!==v*1);U.hist=null;save();render();}}
   else if(a==='sdate'){const d=document.getElementById('sdate').value;if(d){S.start=d;save();toast('Data salvata');render();}}
@@ -595,7 +614,7 @@ function finish(){
 }
 /* import / export */
 function exportData(){
-  const blob=new Blob([JSON.stringify({sessions:S.sessions,weights:S.weights,start:S.start,bio:S.bio,diet:S.diet,schema:S.schema,meta:S.meta,archive:S.archive,extracted:S.extracted,proposed:S.proposed,programs:S.programs,nutritionPlans:S.nutritionPlans,nutritionLog:S.nutritionLog,suggestions:S.suggestions,decisions:S.decisions},null,1)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({sessions:S.sessions,weights:S.weights,start:S.start,bio:S.bio,diet:S.diet,diet2:S.diet2,freeMeals:S.freeMeals,cfg:S.cfg,nutritionLog:S.nutritionLog,schema:S.schema,meta:S.meta,archive:S.archive,extracted:S.extracted,proposed:S.proposed,programs:S.programs,nutritionPlans:S.nutritionPlans,nutritionLog:S.nutritionLog,suggestions:S.suggestions,decisions:S.decisions},null,1)],{type:'application/json'});
   const f=new File([blob],'trackforza-backup-'+today()+'.json',{type:'application/json'});
   if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:'Backup TrackForza'}).catch(()=>{});}
   else{const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=f.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);}
