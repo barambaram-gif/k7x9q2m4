@@ -1,4 +1,4 @@
-const V='tf-v4-2';
+const V='tf-v5-1';
 const FILES=['./','./index.html','./manifest.webmanifest','./apple-touch-icon.png','./icon-192.png','./icon-512.png',
 './fonts/saira-latin-400-normal.woff2','./fonts/saira-latin-500-normal.woff2','./fonts/saira-latin-600-normal.woff2','./fonts/saira-latin-700-normal.woff2',
 './fonts/saira-condensed-latin-400-normal.woff2','./fonts/saira-condensed-latin-500-normal.woff2','./fonts/saira-condensed-latin-600-normal.woff2','./fonts/saira-condensed-latin-700-normal.woff2'];

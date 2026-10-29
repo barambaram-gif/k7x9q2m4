@@ -172,13 +172,37 @@ function macros(items){let k=0,p=0,c=0,f=0;items.forEach(([id,g])=>{const x=F[id
 function optM(o){return o.free?{k:o.kcal,p:o.p,c:o.c,f:o.f}:macros(o.it);}
 
 /* ───────── STATO ───────── */
-const KEY='tf_v4';
+const KEY='tf_v5',OLDKEY='tf_v4';
 let S={start:null,sessions:[],cur:null,weights:[],bio:{hrv:55,fc:52,vo2:38.7,passi:5555,sonno:7,att:549},diet:{wk:{col:0,sm:0,pr:0,sp:1,ce:0},we:{col:0,sm:0,pr:0,sp:1,ce:-1}},sel:null};
 let U={tab:'oggi',ex:null,dd:'wk',hist:null,rest:null};
 function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+const ARCHIVE0=[
+ {id:'doc1',file:'negri-allen.pdf',kind:'scheda',pages:3,until:'05/11',sha256:'e1956035d76b2d55ecf57b0d4810193da42993ca3b78a8b9f9902b8c96227fbc'},
+ {id:'doc2',file:'negri-dieta.pdf',kind:'dieta',pages:2,until:null,sha256:'7d7a421399c5780bc07e421387dc5b62da10762f8fe48be942aec531262151ab'},
+ {id:'doc3',file:'schedasalvatorenegri2.pdf',kind:'scheda',pages:3,until:'20/01',sha256:'cd8a5fbee7276beffa6525ade68e7f5ea22d1028a3bb01358d80b7769398c46d'},
+ {id:'doc4',file:'salvatorenegri2.pdf',kind:'dieta',pages:2,until:null,sha256:'9ccc00ae28a61d96c4b8ced1a0b3a3e9cc9a8363685f0ad3f9fba6fb81536321'},
+ {id:'doc5',file:'schedasalvatorenegri3.pdf',kind:'scheda',pages:4,until:'17/04',sha256:'bdcb50e7007c4000c7d9ddb782d6201bb94e2f06c1a75a7994db71d5fdf4b3f2'}
+];
+function v5shell(){return{schema:5,meta:{schema:5,migratedFrom:null,migratedAt:null,log:[]},archive:[],extracted:[],proposed:null,programs:[],nutritionPlans:{original:null,current:null},nutritionLog:[],suggestions:[],decisions:[]};}
+function addArchive(){ // write-once: existing entries are never modified
+  const have=new Set(S.archive.map(x=>x.id));
+  ARCHIVE0.forEach(d=>{if(!have.has(d.id))S.archive.push(Object.assign({addedAt:today(),source:'allegato utente',review:'da verificare'},d));});
+}
 function load(){
-  try{const d=localStorage.getItem(KEY);if(d){Object.assign(S,JSON.parse(d));}
-  else{const o=localStorage.getItem('tf_v3');if(o){const p=JSON.parse(o);if(p.sessions&&p.sessions.length)S.sessions=p.sessions;}}}catch(e){}
+  Object.assign(S,Object.fromEntries(Object.entries(v5shell()).filter(([k])=>S[k]===undefined)));
+  try{
+    const d=localStorage.getItem(KEY);
+    if(d){Object.assign(S,JSON.parse(d));}
+    else{
+      const o=localStorage.getItem(OLDKEY);
+      if(o){Object.assign(S,JSON.parse(o));S.meta.migratedFrom=OLDKEY;S.meta.log.push({at:today(),from:OLDKEY,to:KEY,sessions:(S.sessions||[]).length});}
+      else{const o3=localStorage.getItem('tf_v3');if(o3){const p=JSON.parse(o3);if(p.sessions&&p.sessions.length)S.sessions=p.sessions;}}
+      S.meta.migratedAt=today();
+    }
+  }catch(e){}
+  const sh=v5shell();Object.keys(sh).forEach(k=>{if(S[k]===undefined)S[k]=sh[k];});
+  S.schema=5;S.meta.schema=5;
+  addArchive();
   if(!S.start)S.start=today();
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
@@ -430,7 +454,7 @@ function finish(){
 }
 /* import / export */
 function exportData(){
-  const blob=new Blob([JSON.stringify({sessions:S.sessions,weights:S.weights,start:S.start,bio:S.bio},null,1)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({sessions:S.sessions,weights:S.weights,start:S.start,bio:S.bio,diet:S.diet,schema:S.schema,meta:S.meta,archive:S.archive,extracted:S.extracted,proposed:S.proposed,programs:S.programs,nutritionPlans:S.nutritionPlans,nutritionLog:S.nutritionLog,suggestions:S.suggestions,decisions:S.decisions},null,1)],{type:'application/json'});
   const f=new File([blob],'trackforza-backup-'+today()+'.json',{type:'application/json'});
   if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:'Backup TrackForza'}).catch(()=>{});}
   else{const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=f.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);}
