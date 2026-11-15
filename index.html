@@ -21,7 +21,7 @@
 @font-face{font-family:'Saira Condensed';font-weight:500;font-display:swap;src:url(fonts/saira-condensed-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Saira Condensed';font-weight:600;font-display:swap;src:url(fonts/saira-condensed-latin-600-normal.woff2) format('woff2')}
 @font-face{font-family:'Saira Condensed';font-weight:700;font-display:swap;src:url(fonts/saira-condensed-latin-700-normal.woff2) format('woff2')}
-:root{--bg:#F6F6F2;--panel:#FFFFFF;--line:#DEDED6;--line2:#BDBDB3;--tx:#0B0B0C;--tx2:#2B2B2E;--mut:#5C5C62;--am:#FFB224;--ams:#C77F00;--amt:#8F5C00;--ink:#1A1200;--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
+:root{--bg:#F6F6F2;--panel:#FFFFFF;--line:#DEDED6;--line2:#BDBDB3;--tx:#0B0B0C;--tx2:#2B2B2E;--mut:#5C5C62;--am:#FFB224;--ams:#C77F00;--amt:#8F5C00;--ink:#1A1200;--red:#C8102E;--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);line-height:1.4;font-family:'Saira',system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%}
 body{overscroll-behavior:none}
@@ -138,6 +138,7 @@ const EX={
  revcr:{n:'Crunch inverso',t:'Addome',r:[10,15],bw:1,yt:'reverse crunch form',cue:'Sdraiato, ginocchia piegate verso il petto. Solleva il bacino di pochi centimetri contraendo l’addome, senza slancio con le gambe. Scendi lento e non inarcare la zona lombare.'},
  lext:{n:'Leg extension',t:'Quadricipiti',r:[10,15],inc:2.5,yt:'leg extension machine form',cue:'Schiena appoggiata, risali fino all’estensione quasi completa con pausa di 1 secondo, scendi lento.'},
  calf:{n:'Calf raise (macchina)',t:'Polpacci',r:[10,15],alt:'calfbw',inc:5,yt:'calf raise machine form',cue:'Pausa in basso nell’allungamento e in alto sulle punte. Escursione completa.'},
+ calfp:{n:'Calf raise alla leg press (ginocchia estese)',t:'Polpacci',r:[10,15],alt:'calfbw',inc:5,yt:'leg press calf raise form',cue:'Gambe quasi tese, solo le caviglie si muovono. Pausa in basso nell’allungamento e in alto sulle punte; non bloccare le ginocchia.'},
  plank:{n:'Plank',t:'Core',r:[30,45],time:1,nasm:'plank',yt:'plank proper form',cue:'Gomiti sotto le spalle, bacino neutro, glutei e addome contratti, respira. Interrompi quando la forma cede.'},
  hip:{n:'Hip thrust (carico moderato)',t:'Glutei',r:[8,12],alt:'bridge',inc:5,yt:'hip thrust machine form',cue:'Schiena alta sulla panca, piedi sotto le ginocchia. Spingi con i talloni, a fine corsa glutei contratti e pausa di 1 secondo. Carico moderato.'},
  abd:{n:'Abduzioni alla macchina',t:'Glutei',r:[12,15],alt:'abdc',inc:2.5,yt:'hip abduction machine form',cue:'Busto appoggiato, spingi con controllo e torna lentamente.'},
@@ -145,17 +146,16 @@ const EX={
  pall:{n:'Pallof press',t:'Core',r:[10,12],inc:1.25,yt:'pallof press form',cue:'Cavo laterale all’altezza del petto. Spingi le mani avanti e resisti alla rotazione del busto. Fai tutte le ripetizioni da un lato, poi dall’altro.'},
  dbug:{n:'Dead bug',t:'Core',r:[8,12],bw:1,nasm:'dead-bug',yt:'dead bug exercise form',cue:'Zona lombare aderente al pavimento. Estendi lentamente braccio e gamba opposti senza perdere il contatto.'}
 };
-const PLAN_OLD={UA:{n:'Upper 1'},LA:{n:'Lower 1'},UB:{n:'Upper 2'},LB:{n:'Lower 2'}};
+const PLAN_OLD={UA:{n:'Upper 1'},LA:{n:'Lower 1'},UB:{n:'Upper 2'},LB:{n:'Lower 2'},G1:{n:'Giorno 1 (piano a 4 giorni)'},G2:{n:'Giorno 2 (piano a 4 giorni)'},G3:{n:'Giorno 3 (piano a 4 giorni)'},G4:{n:'Giorno 4 (piano a 4 giorni)'}};
 const PLAN={
- G1:{n:'Giorno 1',s:'Petto, spalle, tricipiti',b:[{e:['inc30'],r:5,rest:120},{e:['cpm'],r:4,rb:3,rest:90},{e:['cabfly','lcab'],r:3,rb:3,rest:75},{e:['shp'],r:3,rb:2,rest:90},{e:['ohtri'],r:3,rb:3,rest:60},{e:['pushd'],r:3,rb:2,rest:60}]},
- G2:{n:'Giorno 2',s:'Dorso, bicipiti',b:[{e:['latn'],r:5,rest:120},{e:['rowm'],r:4,rb:3,rest:90},{e:['pullo'],r:3,rb:3,rest:75},{e:['shrug'],r:3,rb:0,rest:60},{e:['curlc','hamm'],r:4,rb:3,rest:60},{e:['curla'],r:3,rb:3,rest:60}]},
- G3:{n:'Giorno 3',s:'Gambe e spalle',b:[{e:['lp'],r:4,rest:150},{e:['lext','calf'],r:3,rb:2,rest:75},{e:['hcurl'],r:3,rest:90},{e:['hip'],r:3,rb:2,rest:120},{e:['lat','face'],r:3,rb:2,rest:60}]},
- G4:{n:'Giorno 4',s:'Petto, tricipiti, bicipiti',b:[{e:['cpf'],r:5,rest:120},{e:['dbp'],r:4,rb:3,rest:90},{e:['cabfly','pushd'],r:4,rb:3,rest:75},{e:['dip'],r:3,rb:2,rest:90},{e:['curli'],r:3,rest:60}]}
+ PU:{n:'Push',s:'Petto alto, spalle, tricipiti',b:[{e:['inc30'],r:4,rest:120},{e:['cpf'],r:3,rb:2,rest:90},{e:['cabfly','lcab'],r:3,rb:3,rest:75},{e:['shp'],r:3,rb:2,rest:90},{e:['ohtri'],r:4,rb:3,rest:75},{e:['pushd'],r:2,rb:1,rest:60},{e:['dip'],r:3,rb:0,rest:90}]},
+ PL:{n:'Pull',s:'Dorso, spalle posteriori, bicipiti',b:[{e:['latn'],r:4,rest:120},{e:['rowm'],r:4,rb:3,rest:90},{e:['pullo'],r:3,rest:75},{e:['face','shrug'],r:3,rb:2,rest:60},{e:['curlc','hamm'],r:4,rb:3,rest:60},{e:['curla'],r:3,rb:2,rest:60}]},
+ LG:{n:'Legs',s:'Gambe e glutei',b:[{e:['lp'],r:4,rest:150},{e:['hip'],r:3,rest:120},{e:['hcurl'],r:3,rest:90},{e:['lext','calfp'],r:3,rest:75},{e:['abd'],r:2,rb:0,rest:60},{e:['revcr','plank'],r:3,rb:0,rest:60}]}
 };
 function blocksFor(day,mode){return PLAN[day].b.map(b=>({e:b.e.slice(),r:(mode==='b'&&b.rb!==undefined)?b.rb:b.r,rest:b.rest})).filter(b=>b.r>0);}
 function curB(){return S.cur.b||blocksFor(S.cur.day,'c');}
 function rx(id){return (S.cur&&S.cur.sub&&S.cur.sub[id])||id;}
-const CYCLE=['G1','G2','G3','G4'];
+const CYCLE=['PU','PL','LG'];
 const TRANS=30;
 
 /* ───────── DIETA ───────── */
@@ -271,8 +271,8 @@ function rounds(b){return isDeload()?Math.max(2,b.r-1):b.r;}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2200);}
-function nextDay(){const l=S.sessions[S.sessions.length-1];if(!l||!CYCLE.includes(l.day))return 'G1';return CYCLE[(CYCLE.indexOf(l.day)+1)%4];}
-function estMin(day,mode){mode=mode||'c';let s=300+240;const B=blocksFor(day,mode);s+=45*B.length;if(mode==='c')s+=300;if(day==='G3')s+=240;B.forEach(b=>{s+=rounds(b)*(b.e.length===2?(2*40+TRANS+b.rest):(40+b.rest));});return Math.round(s/60);}
+function nextDay(){const l=S.sessions[S.sessions.length-1];if(!l||!CYCLE.includes(l.day))return 'PU';return CYCLE[(CYCLE.indexOf(l.day)+1)%CYCLE.length];}
+function estMin(day,mode){mode=mode||'c';let s=300+240;const B=blocksFor(day,mode);s+=45*B.length;if(mode==='c')s+=300;if(day==='LG')s+=240;B.forEach(b=>{s+=rounds(b)*(b.e.length===2?(2*40+TRANS+b.rest):(40+b.rest));});return Math.round(s/60);}
 
 /* ───────── STORICO PER ESERCIZIO ───────── */
 function hist(exId){
@@ -361,7 +361,7 @@ function restStrip(){
 }
 
 /* — OGGI — */
-function blkLabel(b){const n=rounds(b);return b.e.length===2?'Superset · '+n+' serie ciascuno · recupero '+fmt(b.rest)+' dopo la coppia':'Esercizio singolo · '+n+' serie · recupero '+fmt(b.rest);}
+function blkLabel(b){const n=rounds(b);return b.e.length===2?'<b style="color:var(--red)">SUPERSET</b> · '+n+' serie ciascuno · recupero '+fmt(b.rest)+' dopo la coppia':'Esercizio singolo · '+n+' serie · recupero '+fmt(b.rest);}
 function vOggi(){
   if(U.ex)return vEx();
   const w=week(),dl=isDeload();
@@ -391,7 +391,7 @@ function vEx(){
   const id=U.ex,rid=rx(id),e=EX[rid],L=locate(id),n=rounds(L.b),done=S.cur.ex[id]||[],pair=L.b.e.length===2,partner=pair?L.b.e[1-L.i]:null;
   const h6=hist(rid).slice(-6),tg=target(rid),link=e.nasm?N+e.nasm:YT(e.yt),noKg=e.time||e.bw;
   let h='<div class="mini"><button class="pill" data-act="back" style="min-width:44px">‹ Indietro</button><span class="row" style="gap:20px"><span style="text-align:right"><span class="small">Recupero</span><br><b class="cd" style="font-size:24px;line-height:1" data-rt>'+fmt(L.b.rest)+'</b></span><span style="text-align:right"><span class="small">Seduta</span><br><b class="cd" style="font-size:24px;line-height:1" data-sess>0:00</b></span></span></div>';
-  h+='<div class="small" style="margin-top:24px">'+PLAN[S.cur.day].n+' · Settimana '+week()+(pair?' · Superset con '+esc(EX[rx(partner)].n):' · Esercizio singolo')+'</div><h1 style="margin:8px 0 0;font-size:34px">'+esc(e.n)+'</h1>';
+  h+='<div class="small" style="margin-top:24px">'+PLAN[S.cur.day].n+' · Settimana '+week()+(pair?'':' · Esercizio singolo')+'</div>'+(pair?'<div role="note" style="margin-top:10px;border:2px solid var(--red);color:var(--red);border-radius:10px;padding:10px 14px;font-weight:700;font-size:15px">SUPERSET · alterna con '+esc(EX[rx(partner)].n)+'</div>':'')+'<h1 style="margin:8px 0 0;font-size:34px">'+esc(e.n)+'</h1>';
   h+='<div class="row sp" style="margin-top:16px;gap:12px"><span style="font-size:14px;color:var(--tx2)">'+esc(e.t)+' · '+n+' × '+e.r[0]+'–'+e.r[1]+(e.time?' s':'')+'</span><a href="'+link+'" target="_blank" rel="noopener" style="font-size:14px;min-height:44px;display:flex;align-items:center;gap:6px;white-space:nowrap">Come si esegue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>';
   {const base=EX[id],al=base.alt&&EX[base.alt];if(al||rid!==id){h+='<div class="card" style="margin-top:12px;padding:12px 18px">'+(rid===id?'<div style="font-size:14px;color:var(--tx2)">Macchina non disponibile? Alternativa: <b>'+esc(al.n)+'</b>. Lo storico dei carichi resta separato.</div><button class="pill" data-act="sub" data-v="'+id+'" style="margin-top:10px">Usa l’alternativa</button>':'<div style="font-size:14px;color:var(--tx2)">Oggi stai usando l’alternativa al posto di <b>'+esc(base.n)+'</b>.</div><button class="pill" data-act="unsub" data-v="'+id+'" style="margin-top:10px">Torna all’esercizio previsto</button>')+'</div>';}}
   h+='<details class="card" style="margin-top:12px;padding:6px 18px"><summary style="min-height:48px;display:flex;align-items:center;font-size:15px;cursor:pointer">Indicazioni di esecuzione</summary><div style="font-size:14px;color:var(--tx2);line-height:1.5;padding:4px 0 12px">'+esc(e.cue)+'</div><div class="row" style="gap:20px;flex-wrap:wrap;padding-bottom:6px">'+(e.nasm?'<a href="'+N+e.nasm+'" target="_blank" rel="noopener" style="font-size:14px;min-height:44px;display:flex;align-items:center">Scheda NASM</a>':'')+'<a href="'+YT(e.yt)+'" target="_blank" rel="noopener" style="font-size:14px;min-height:44px;display:flex;align-items:center">Video su YouTube</a></div></details>';
@@ -414,10 +414,20 @@ function vEx(){
   const tot=U.rest?U.rest.total:L.b.rest;
   h+='<div class="sec" style="border-top:1px solid var(--line);padding-top:32px;display:flex;flex-direction:column;align-items:center"><div class="ring"><svg width="176" height="176" viewBox="0 0 176 176" aria-hidden="true"><circle cx="88" cy="88" r="78" fill="none" stroke="#DEDED6" stroke-width="6"/><circle id="rc" cx="88" cy="88" r="78" fill="none" stroke="#C77F00" stroke-width="6" stroke-linecap="round" stroke-dasharray="490" stroke-dashoffset="490" transform="rotate(-90 88 88)"/><circle id="rd" cx="88" cy="10" r="5" fill="#0B0B0C" transform="rotate(0 88 88)"/></svg><div class="c"><div class="cd" style="font-size:52px;font-weight:600;line-height:1" data-rt>'+fmt(tot)+'</div><div class="small" style="margin-top:6px;text-align:center;padding:0 16px" data-rl>Recupero, obiettivo '+fmt(tot)+'</div></div></div>';
   h+='<div class="row" style="gap:12px;margin-top:20px"><button class="pill" data-act="radd" data-v="-15" aria-label="Meno 15 secondi" style="min-width:64px">−15 s</button><button class="pill" data-act="rskip" style="min-width:104px">Salta</button><button class="pill" data-act="radd" data-v="15" aria-label="Più 15 secondi" style="min-width:64px">+15 s</button></div>';
-  const nx=nextEx(id);
-  if(nx&&nx!==id)h+='<button class="btn ghost full" data-act="openex" data-v="'+nx+'" style="margin-top:28px">Prossimo: '+esc(EX[nx].n)+'</button>';
-  else if(!nx)h+='<button class="btn full" data-act="back" style="margin-top:28px">Torna all’allenamento</button>';
-  return h+'</div>';
+  h+='</div>';
+  {const q=nextOther(id);let t='';
+   if(pair&&nextEx(id)===partner)t+='<div style="color:var(--red);font-weight:700;font-size:13px;margin-bottom:6px">SUPERSET · ora passa a '+esc(EX[rx(partner)].n)+'</div>';
+   if(q){const bq=locate(q);t+='<button class="ex" data-act="openex" data-v="'+q+'" style="width:100%"><span><span class="small">Prossimo esercizio</span><br><span style="font-size:17px;font-weight:600">'+esc(EX[rx(q)].n)+'</span><br><span class="small">'+rounds(bq.b)+' × '+EX[rx(q)].r[0]+'–'+EX[rx(q)].r[1]+(EX[rx(q)].time?' s':'')+(bq.b.e.length===2?' · <b style="color:var(--red)">in superset</b>':'')+'</span></span><span aria-hidden="true">›</span></button>';}
+   else t+='<div class="small">Ultimo esercizio della seduta</div><button class="btn full" data-act="back" style="margin-top:8px">Torna all’allenamento</button>';
+   h+='<div style="position:sticky;bottom:-32px;margin:28px -24px -32px;padding:12px 24px calc(12px + var(--sab));background:var(--bg);border-top:1px solid var(--line2)">'+t+'</div>';}
+  return h;
+}
+function nextOther(id){
+  const B=curB(),L=locate(id),d=k=>(S.cur.ex[k]||[]).length;
+  if(L.b.e.length===2){const p=L.b.e[1-L.i];if(d(p)<rounds(L.b)&&d(p)<=d(id))return p;}
+  for(let bi=L.bi+1;bi<B.length;bi++)for(const x of B[bi].e)if(d(x)<rounds(B[bi]))return x;
+  for(let bi=0;bi<L.bi;bi++)for(const x of B[bi].e)if(d(x)<rounds(B[bi]))return x;
+  return null;
 }
 function nextEx(id){
   const P={b:curB()},L=locate(id),d=k=>(S.cur.ex[k]||[]).length,n=rounds(L.b);
